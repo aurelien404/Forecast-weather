@@ -9,6 +9,18 @@ Features and documentation are actively being built—stay tuned for updates and
 
 Feel free to fork, explore, or contribute if you're feeling adventurous.
 
+## 🛠️ Development Steps
+
+- [x] Project initialized
+- [x] React frontend scaffolded with Vite
+- [x] Tailwind CSS integrated
+
+- [ ] Laravel backend configured
+- [ ] City data parsed from GeoNames
+- [ ] Weather API responses formatted
+- [ ] Display components for forecast data
+- [ ] ...
+
 ## 🔗 Data Sources
 
 - **Weather API:**  
