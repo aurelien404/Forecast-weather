@@ -1,8 +1,15 @@
+import { useState } from "react";
+import CitySearch from "./components/CitySearch";
+import Weather from "./components/Weather";
+
 function App() {
+  const [selectedCity, setSelectedCity] = useState(null);
+
   return (
-    <>
-      <div className="text-4xl">Hello!</div>
-    </>
+    <div className="p-20">
+      <CitySearch onCitySelect={setSelectedCity} />
+      <Weather city={selectedCity} />
+    </div>
   );
 }
 
