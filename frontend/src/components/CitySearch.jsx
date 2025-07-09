@@ -28,9 +28,9 @@ const CitySearch = ({ onCitySelect }) => {
   };
 
   return (
-    <div>
+    <div className="my-5">
       <input
-        className="border-2 border-amber-50 py-2 px-5"
+        className="border-2 border-amber-50 py-2 px-5 mr-4"
         type="text"
         placeholder="Search for a city"
         value={query}

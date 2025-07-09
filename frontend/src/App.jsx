@@ -7,6 +7,9 @@ function App() {
 
   return (
     <div className="p-20">
+      <p className="text-gray-400 text-xs">
+        *Countries available: Switzerland, France, and the United Kingdom
+      </p>
       <CitySearch onCitySelect={setSelectedCity} />
       <Weather city={selectedCity} />
     </div>

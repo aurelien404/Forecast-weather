@@ -40,7 +40,7 @@ const Weather = ({ city }) => {
         Weather in {activeCity.name} ({activeCity.country_code})
       </h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <div>
+      <div className="text-lg">
         <p>🌡 Temperature: {weatherData.weatherData.temperature}°C</p>
         <p>💨 Wind Speed: {weatherData.weatherData.windspeed} km/h</p>
       </div>

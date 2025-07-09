@@ -9,19 +9,18 @@ Features and documentation are actively being built—stay tuned for updates and
 
 Feel free to fork, explore, or contribute if you're feeling adventurous.
 
-## 🛠️ Development Steps
+## Development Steps
 
 - [x] Project initialized
 - [x] React frontend scaffolded with Vite
 - [x] Tailwind CSS integrated
-
-- [ ] Laravel backend configured
-- [ ] City data parsed from GeoNames
+- [x] Laravel backend configured
+- [x] City data parsed from GeoNames
 - [ ] Weather API responses formatted
 - [ ] Display components for forecast data
 - [ ] ...
 
-## 🔗 Data Sources
+## Data Sources
 
 - **Weather API:**  
   [Open-Meteo](https://open-meteo.com/en/docs) — Free weather data with hourly/daily forecasts.
@@ -31,6 +30,9 @@ Feel free to fork, explore, or contribute if you're feeling adventurous.
 
 - **Weather Icons:**  
   [React Icons](https://react-icons.github.io/react-icons/) — Beautiful icon sets for weather conditions.
+
+- **Open-Meteo docs:**  
+  [0penmete0.md](https://react-icons.github.io/react-icons/) — Personnal docs about Open Meteo Api.
 
 ## Features
 
