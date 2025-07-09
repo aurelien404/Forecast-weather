@@ -31,8 +31,10 @@ Feel free to fork, explore, or contribute if you're feeling adventurous.
 - **Weather Icons:**  
   [React Icons](https://react-icons.github.io/react-icons/) — Beautiful icon sets for weather conditions.
 
+### Docs
+
 - **Open-Meteo docs:**  
-  [0penmete0.md](https://react-icons.github.io/react-icons/) — Personnal docs about Open Meteo Api.
+  [0penmete0.md](https://github.com/aurelien404/Forecast-weather/blob/main/Docs/0penmete0.md) — Personnal docs about Open Meteo Api.
 
 ## Features
 
