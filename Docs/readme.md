@@ -22,6 +22,8 @@ Feel free to fork, explore, or contribute if you're feeling adventurous.
 
 ## Data Sources
 
+### Tools
+
 - **Weather API:**  
   [Open-Meteo](https://open-meteo.com/en/docs) — Free weather data with hourly/daily forecasts.
 
