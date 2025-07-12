@@ -1,9 +1,16 @@
 import { useState } from "react";
 import CitySearch from "./components/CitySearch";
 import Weather from "./components/Weather";
+import { useGeolocated } from "react-geolocated";
 
 function App() {
   const [selectedCity, setSelectedCity] = useState(null);
+
+  const { coords, isGeolocationAvailable, isGeolocationEnabled } =
+    useGeolocated({
+      positionOptions: { enableHighAccuracy: false },
+      userDecisionTimeout: 5000,
+    });
 
   return (
     <div className="p-20">
@@ -11,7 +18,14 @@ function App() {
         *Countries available: Switzerland, France, and the United Kingdom
       </p>
       <CitySearch onCitySelect={setSelectedCity} />
-      <Weather city={selectedCity} />
+      <Weather
+        city={selectedCity}
+        coords={
+          isGeolocationAvailable && isGeolocationEnabled && coords
+            ? coords
+            : null
+        }
+      />
     </div>
   );
 }

@@ -16,6 +16,7 @@ Feel free to fork, explore, or contribute if you're feeling adventurous.
 - [x] Tailwind CSS integrated
 - [x] Laravel backend configured
 - [x] City data parsed from GeoNames
+- [x] Add a geoLocalistion
 - [ ] Weather API responses formatted
 - [ ] Display components for forecast data
 - [ ] ...

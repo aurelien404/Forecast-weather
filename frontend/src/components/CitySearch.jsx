@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { IoAddCircleOutline } from "react-icons/io5";
 import axios from "axios";
 
 const CitySearch = ({ onCitySelect }) => {
