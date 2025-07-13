@@ -33,7 +33,7 @@
 ### Backend - WeatherController.php
 
 ```php
-$today = date('Y-m-d');
+
 
 $response = $client->get('https://api.open-meteo.com/v1/forecast', [
     'verify' => false,

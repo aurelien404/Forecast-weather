@@ -27,15 +27,22 @@ class WeatherController extends Controller
                     'query' => [
                         'latitude' => $latitude,
                         'longitude' => $longitude,
-                        'current_weather' => true,
-                        'timezone' => 'Europe/Zurich'
+                        'timezone' => 'Europe/Zurich',
+                        'hourly' => implode(',', [
+                            'temperature_2m',
+                            'apparent_temperature',
+                            'weather_code',
+                            'wind_speed_10m',
+                            'wind_direction_10m',
+                            'visibility'
+                        ]),
                     ]
                 ]);
 
                 $data = json_decode($response->getBody(), true);
 
                 return response()->json([
-                    'weatherData' => $data['current_weather'],
+                    'weatherData' => $data['hourly'],
                     'cityName' => $cityName
                 ]);
             } catch (\Exception $e) {
