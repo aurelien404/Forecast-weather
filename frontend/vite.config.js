@@ -11,7 +11,8 @@ export default defineConfig({
     mkcert()
   ],
   server: {
-    host: true,
-    https: true,
+    host: '192.168.1.177',
+    https: false,
+    port: 5173,
   }
 });

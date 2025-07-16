@@ -9,9 +9,12 @@ const CitySearch = ({ onCitySelect }) => {
 
   const handleSearch = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/cities/search", {
-        params: { q: query },
-      });
+      const res = await axios.get(
+        "http://192.168.1.177:8000/api/cities/search",
+        {
+          params: { q: query },
+        }
+      );
       setCities(res.data.cities);
       setError("");
     } catch (err) {

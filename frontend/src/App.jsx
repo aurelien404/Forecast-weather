@@ -13,7 +13,7 @@ function App() {
     });
 
   return (
-    <div className="p-20">
+    <div className="p-5">
       <p className="text-gray-400 text-xs">
         *Countries available: Switzerland, France, and the United Kingdom
       </p>

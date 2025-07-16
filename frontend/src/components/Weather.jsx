@@ -118,7 +118,7 @@ const Weather = ({ city, coords }) => {
   useEffect(() => {
     if (!activeCity) return;
     axios
-      .get("http://localhost:8000/api/weather", {
+      .get("http://192.168.1.177:8000/api/weather", {
         params: {
           lat: activeCity.latitude,
           lon: activeCity.longitude,
