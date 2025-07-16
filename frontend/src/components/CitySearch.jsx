@@ -5,7 +5,7 @@ const CitySearch = ({ onCitySelect }) => {
   const [query, setQuery] = useState("");
   const [cities, setCities] = useState([]);
   const [error, setError] = useState("");
-  const [showList, setShowList] = useState(true);
+  const [showList, setShowList] = useState(false);
 
   const handleSearch = async () => {
     try {
@@ -30,25 +30,11 @@ const CitySearch = ({ onCitySelect }) => {
   };
 
   return (
-    <div className="my-5">
-      <input
-        className="border-2 border-amber-50 py-2 px-5 mr-4"
-        type="text"
-        placeholder="Search for a city"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <button
-        className="border-2 border-amber-50 py-2 px-5"
-        onClick={handleSearch}
-      >
-        Search
-      </button>
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
+    <div className="w-full">
       {showList && (
-        <ul>
+        <ul
+          className={`bg-zzcontrast absolute bottom-20 max-h-screen overflow-scroll left-5 right-5 border-2 p-5 z-10`}
+        >
           {cities.map((city) => (
             <li key={`${city.name}-${city.latitude}-${city.longitude}`}>
               <a
@@ -67,6 +53,20 @@ const CitySearch = ({ onCitySelect }) => {
           ))}
         </ul>
       )}
+      <div className="w-full flex flex-row gap-x-2">
+        <input
+          className="w-full"
+          type="text"
+          placeholder="Search for a city"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button className="w-3/7 ml-auto" onClick={handleSearch}>
+          Search
+        </button>
+      </div>
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };

@@ -13,19 +13,23 @@ function App() {
     });
 
   return (
-    <div className="p-5">
-      <p className="text-gray-400 text-xs">
-        *Countries available: Switzerland, France, and the United Kingdom
-      </p>
-      <CitySearch onCitySelect={setSelectedCity} />
-      <Weather
-        city={selectedCity}
-        coords={
-          isGeolocationAvailable && isGeolocationEnabled && coords
-            ? coords
-            : null
-        }
-      />
+    <div className="flex flex-col gap-2 p-5 w-full h-screen overflow-hidden">
+      <div className="bg-green-400 h-9/10">
+        <Weather
+          city={selectedCity}
+          coords={
+            isGeolocationAvailable && isGeolocationEnabled && coords
+              ? coords
+              : null
+          }
+        />
+      </div>
+      <div className="absolute left-0 bottom-0 w-full flex flex-col justify-between p-5">
+        <CitySearch onCitySelect={setSelectedCity} />
+        <p className="text-[8px]">
+          *Countries available: Switzerland, France, and the United Kingdom
+        </p>
+      </div>
     </div>
   );
 }

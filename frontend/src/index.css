@@ -1,18 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
 @import "tailwindcss";
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@theme {
+  --font-funnel: "Funnel", sans-serif;
+  --font-Michroma: "Michroma", sans-serif;
+  --color-zzbase: #212121;
+  --color-zzcontrast: #fff;
+  --color-zzlink: #625deb;
+}
 
-  color-scheme: light dark;
-  color: rgb(255, 255, 255);
-  background-color: #191919;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  font-family: var(--font-Michroma);
+  font-size: 0.75rem;
 }
 
 input:hover,
@@ -21,22 +21,7 @@ button:active,
 button:hover {
   border-color: #646cff;
   color: #646cff;
-  @apply border-2 scale-105;
-}
-
-a {
-  font-weight: 700;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #ffffff;
-}
-
-h1 {
-  font-size: 3em;
-  line-height: 1.1;
-  font-weight: 700;
+  @apply border-2 hover:scale-101 active:scale-98;
 }
 
 input,
@@ -44,4 +29,13 @@ textarea,
 button {
   outline: none;
   cursor: pointer;
+}
+
+input,
+button {
+  @apply border-2 py-2 px-5 transition-all ease-out duration-150;
+}
+
+.delayed {
+  @apply transition-all ease-out duration-150;
 }
