@@ -6,8 +6,17 @@ const Weather = ({ city, coords }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState("");
   const [icons, setIcons] = useState(false);
-  const currentDate = new Date().toLocaleDateString();
-  const currentTimeIso = new Date().toISOString().slice(0, 13) + ":00";
+
+  const currentTime = new Date();
+  const currentTimeIso = `${currentTime.getFullYear()}-${String(
+    currentTime.getMonth() + 1
+  ).padStart(2, "0")}-${String(currentTime.getDate()).padStart(
+    2,
+    "0"
+  )}T${String(currentTime.getHours()).padStart(2, "0")}:${String(
+    currentTime.getMinutes()
+  ).padStart(2, "0")}`;
+  // e.g., "2025-07-19T15:00"
 
   const WEATHER_CODE_DESCRIPTIONS = {
     // ☀️ Clear & Cloudy
@@ -142,6 +151,7 @@ const Weather = ({ city, coords }) => {
   const visibility = weatherData?.weatherData?.visibility?.[index] ?? 0;
   const visibility_km = Math.floor(visibility / 1000);
 
+  console.log(weatherData.weatherData.time);
   return (
     <div>
       <h1 className="flex flex-row items-center">
@@ -155,7 +165,7 @@ const Weather = ({ city, coords }) => {
       {error && <p style={{ color: "red" }}>{error}</p>}
       <div className="text-lg">
         <p>---</p>
-        <p>Time: {currentDate}</p>
+        <p>Time: {currentTimeIso}</p>
         <p>App Time: {weatherData.weatherData.time[index]}</p>
         <p>---</p>
         <p>
