@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="flex flex-col gap-2 p-5 w-full h-screen overflow-hidden">
-      <div className="bg-green-400 h-9/10">
+      <div className="h-9/10">
         <Weather
           city={selectedCity}
           coords={
