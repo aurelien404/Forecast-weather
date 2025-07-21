@@ -17,10 +17,10 @@ Feel free to reach out with questions, feedback, or ideas:
 
 **Email:** [contact@aurelienj.ch](mailto:contact@aurelienj.ch)
 
-# WeatherVue — A Simple Weather Dashboard
+## Weather Screenshot — A Simple Weather Dashboard
 
 A responsive weather application built with React (Vite), Tailwind CSS, and Laravel.  
-Currently supports geolocation and forecast data for Switzerland, France, and the UK — with upcoming features like rain graphs and multi-country support.
+Currently supports forecast data for Switzerland, France, and the UK — with upcoming features like rain graphs and multi-country support.
 
 ![App Preview](./assets/weather-app-screenshots.png)
 
