@@ -17,7 +17,7 @@ Feel free to reach out with questions, feedback, or ideas:
 
 **Email:** [contact@aurelienj.ch](mailto:contact@aurelienj.ch)
 
-## Weather Screenshot — A Simple Weather Dashboard
+## Weather Pictures — A Simple Weather Dashboard
 
 A responsive weather application built with React (Vite), Tailwind CSS, and Laravel.  
 Currently supports forecast data for Switzerland, France, and the UK — with upcoming features like rain graphs and multi-country support.
