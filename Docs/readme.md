@@ -11,13 +11,13 @@ Upcoming upgrades and new enhancements (like multi-country support and rain grap
 
 Feel free to fork, explore, or contribute — your insights are always welcome.
 
-## 📫 Contact
+## Contact
 
 Feel free to reach out with questions, feedback, or ideas:
 
 **Email:** [contact@aurelienj.ch](mailto:contact@aurelienj.ch)
 
-# 🌤️ WeatherVue — A Simple Weather Dashboard
+# WeatherVue — A Simple Weather Dashboard
 
 A responsive weather application built with React (Vite), Tailwind CSS, and Laravel.  
 Currently supports geolocation and forecast data for Switzerland, France, and the UK — with upcoming features like rain graphs and multi-country support.
@@ -26,7 +26,7 @@ Currently supports geolocation and forecast data for Switzerland, France, and th
 
 ## Development Steps
 
-## ✅ Completed Features
+## Completed Features
 
 - [x] Project initialized
 - [x] React frontend scaffolded with Vite
@@ -38,7 +38,7 @@ Currently supports geolocation and forecast data for Switzerland, France, and th
 - [x] Format and normalize Weather API responses
 - [x] Create display components for forecast data
 
-## 🔧 Next Steps / Ideas
+## Next Steps / Ideas
 
 - [ ] Integrate precipitation graph (rain data visualization)
 - [ ] Add support for more countries (currently limited to Switzerland, France, and the UK)
