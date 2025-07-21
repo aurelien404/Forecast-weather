@@ -4,21 +4,46 @@ A lightweight weather forecast application built with React & Laravel, pulling r
 
 ## Project Status
 
-**This project is currently under construction.**  
-Features and documentation are actively being built—stay tuned for updates and new releases!
+**Phase One complete — core features are live and functional.**  
+The project is now stable and working end-to-end, with initial goals successfully implemented.
 
-Feel free to fork, explore, or contribute if you're feeling adventurous.
+Upcoming upgrades and new enhancements (like multi-country support and rain graphs) are planned for future releases. Stay tuned!
+
+Feel free to fork, explore, or contribute — your insights are always welcome.
+
+## 📫 Contact
+
+Feel free to reach out with questions, feedback, or ideas:
+
+**Email:** [contact@aurelienj.ch](mailto:contact@aurelienj.ch)
+
+# 🌤️ WeatherVue — A Simple Weather Dashboard
+
+A responsive weather application built with React (Vite), Tailwind CSS, and Laravel.  
+Currently supports geolocation and forecast data for Switzerland, France, and the UK — with upcoming features like rain graphs and multi-country support.
+
+![App Preview](./assets/weather-app-screenshots.png)
 
 ## Development Steps
+
+## ✅ Completed Features
 
 - [x] Project initialized
 - [x] React frontend scaffolded with Vite
 - [x] Tailwind CSS integrated
 - [x] Laravel backend configured
 - [x] City data parsed from GeoNames
-- [x] Add a geoLocalistion
-- [ ] Weather API responses formatted
-- [ ] Display components for forecast data
+- [x] Geolocation feature implemented
+- [x] Core UI functional and app working end-to-end
+- [x] Format and normalize Weather API responses
+- [x] Create display components for forecast data
+
+## 🔧 Next Steps / Ideas
+
+- [ ] Integrate precipitation graph (rain data visualization)
+- [ ] Add support for more countries (currently limited to Switzerland, France, and the UK)
+- [ ] Add unit toggle (metric/imperial)
+- [ ] Save user preferences (localStorage or cookies)
 - [ ] ...
 
 ## Data Sources

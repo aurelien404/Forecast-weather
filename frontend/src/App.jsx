@@ -13,7 +13,7 @@ function App() {
     });
 
   return (
-    <div className="flex flex-col gap-2 p-5 w-full h-screen overflow-hidden">
+    <div className="flex flex-col gap-2 p-5 w-full md:w-5/12 mx-auto h-screen overflow-hidden">
       <div className="h-9/10">
         <Weather
           city={selectedCity}
@@ -24,7 +24,7 @@ function App() {
           }
         />
       </div>
-      <div className="absolute left-0 bottom-0 w-full flex flex-col justify-between p-5">
+      <div className="absolute left-0 md:left-auto bottom-0 w-full md:w-5/12 flex flex-col justify-between p-5">
         <CitySearch onCitySelect={setSelectedCity} />
         <p className="text-[8px]">
           *Countries available: Switzerland, France, and the United Kingdom

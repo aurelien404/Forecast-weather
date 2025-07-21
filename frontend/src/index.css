@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bytesized&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -9,13 +10,14 @@
   --font-Michroma: "Michroma", sans-serif;
   --font-Gemunu: "Gemunu", sans-serif;
   --font-Bytesized: "Bytesized", sans-serif;
+  --font-ShareTech: "Share Tech", sans-serif;
   --color-zzbase: #212121;
   --color-zzcontrast: #fff;
   --color-zzlink: #625deb;
 }
 
 body {
-  font-family: var(--font-Michroma);
+  font-family: var(--font-ShareTech);
   font-size: 0.75rem;
 }
 

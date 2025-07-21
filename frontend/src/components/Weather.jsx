@@ -13,6 +13,7 @@ import { TiWeatherSnow } from "react-icons/ti"; // snowy
 import { TiWeatherStormy } from "react-icons/ti"; // storm
 import { TiWeatherWindy } from "react-icons/ti"; // windy
 import { TiWeatherWindyCloudy } from "react-icons/ti"; // windy cloudy
+import { BsCloudRain } from "react-icons/bs"; // rain
 
 const Weather = ({ city, coords }) => {
   const [weatherData, setWeatherData] = useState(null);
@@ -166,7 +167,7 @@ const Weather = ({ city, coords }) => {
     return (
       <div className="w-2/10 h-full  flex flex-col items-center">
         <p className="font-extrabold pb-2">{hour}:00</p>
-        <p className="text-4xl md:text-7xl">
+        <p className="text-4xl md:text-6xl">
           {
             WEATHER_CODE_DESCRIPTIONS[
               weatherData.weatherData.weather_code[index + n]
@@ -175,15 +176,15 @@ const Weather = ({ city, coords }) => {
         </p>
         <p className="flex flex-row items-center text-base md:text-xl">
           {weatherData.weatherData.temperature_2m[index + n]}
-          <p className="text-[8px]">C</p>
+          <p className="text-[8px]">°</p>
         </p>
         <p className="flex flex-row items-center">
           {weatherData.weatherData.wind_speed_10m[index + n]}
           <p className="text-[8px]">km/h</p>
         </p>
-        <p className="flex flex-row items-center ">
-          {weatherData.weatherData.precipitation_probability[index + n]}
-          <p className="text-[8px]">%</p>
+        <p className="flex flex-row items-center gap-1 ">
+          <BsCloudRain />
+          {weatherData.weatherData.precipitation_probability[index + n]}%
         </p>
       </div>
     );
@@ -204,7 +205,7 @@ const Weather = ({ city, coords }) => {
       {error && <p style={{ color: "red" }}>{error}</p>}
       <div className="w-full flex flex-col h-4/12 items-center justify-center">
         <div className="flex flex-col items-center">
-          <p className="text-6xl md:text-9xl">
+          <p className="text-6xl md:text-8xl">
             {
               WEATHER_CODE_DESCRIPTIONS[
                 weatherData.weatherData.weather_code[index]
