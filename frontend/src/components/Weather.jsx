@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaLocationCrosshairs } from "react-icons/fa6";
-import { LuWind } from "react-icons/lu";
-import { MdOutlineVisibility } from "react-icons/md";
-
+import { LuWind } from "react-icons/lu"; // wind logo
 import { IoSunnyOutline } from "react-icons/io5"; // sunny
-import { TiWeatherCloudy } from "react-icons/ti"; // cloudy
-import { TiWeatherDownpour } from "react-icons/ti"; // Rain
-import { IoPartlySunnyOutline } from "react-icons/io5"; // partly sunny
-import { TiWeatherShower } from "react-icons/ti"; // Drizzle
+import { MdOutlineCloud } from "react-icons/md"; // cloudy
+import { WiDaySunnyOvercast } from "react-icons/wi"; // partly sunny
+import { BsCloudRain } from "react-icons/bs"; //light rain
+import { BsCloudRainHeavy } from "react-icons/bs"; // heavy rain
 import { TiWeatherSnow } from "react-icons/ti"; // snowy
 import { TiWeatherStormy } from "react-icons/ti"; // storm
-import { TiWeatherWindy } from "react-icons/ti"; // windy
-import { TiWeatherWindyCloudy } from "react-icons/ti"; // windy cloudy
-import { BsCloudRain } from "react-icons/bs"; // rain
 
 const Weather = ({ city, coords }) => {
   const [weatherData, setWeatherData] = useState(null);
@@ -27,31 +22,48 @@ const Weather = ({ city, coords }) => {
     2,
     "0"
   )}T${String(currentTime.getUTCHours()).padStart(2, "0")}:00`;
+  const currentTimeHourly = `${String(currentTime.getUTCDate()).padStart(
+    2,
+    "0"
+  )}/${String(currentTime.getUTCMonth() + 1).padStart(
+    2,
+    "0"
+  )}/${currentTime.getUTCFullYear()} ${currentTime.toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZone: "Europe/Paris",
+  })}`;
 
+  const times = `${currentTime.toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    hour12: false,
+    timeZone: "Europe/Paris",
+  })}:00`;
   const WEATHER_CODE_DESCRIPTIONS = {
     // ☀️ Clear & Cloudy
     0: <IoSunnyOutline />, // Clear sky
     1: <IoSunnyOutline />, // Mainly clear
-    2: <IoPartlySunnyOutline />, // Partly cloudy
-    3: <TiWeatherCloudy />, // Overcast
+    2: <WiDaySunnyOvercast />, // Partly cloudy
+    3: <MdOutlineCloud />, // Overcast
 
     // 🌫️ Fog & Atmospheric
-    45: <TiWeatherCloudy />, // Fog
-    48: <TiWeatherCloudy />, // Depositing rime fog
+    45: <MdOutlineCloud />, // Fog
+    48: <MdOutlineCloud />, // Depositing rime fog
 
     // 🌧️ Drizzle
-    51: <TiWeatherShower />, // Light drizzle
-    53: <TiWeatherShower />, // Moderate drizzle
-    55: <TiWeatherShower />, // Dense drizzle
-    56: <TiWeatherShower />, // Light freezing drizzle
-    57: <TiWeatherShower />, // Dense freezing drizzle
+    51: <BsCloudRain />, // Light drizzle
+    53: <BsCloudRain />, // Moderate drizzle
+    55: <BsCloudRain />, // Dense drizzle
+    56: <BsCloudRain />, // Light freezing drizzle
+    57: <BsCloudRain />, // Dense freezing drizzle
 
     // 🌧️ Rain
-    61: <TiWeatherDownpour />, // Slight rain
-    63: <TiWeatherDownpour />, // Moderate rain
-    65: <TiWeatherDownpour />, // Heavy rain
-    66: <TiWeatherDownpour />, // Light freezing rain
-    67: <TiWeatherDownpour />, // Heavy freezing rain
+    61: <BsCloudRain />, // Slight rain
+    63: <BsCloudRain />, // Moderate rain
+    65: <BsCloudRainHeavy />, // Heavy rain
+    66: <BsCloudRain />, // Light freezing rain
+    67: <BsCloudRainHeavy />, // Heavy freezing rain
 
     // ❄️ Snow
     71: <TiWeatherSnow />, // Slight snowfall
@@ -60,9 +72,9 @@ const Weather = ({ city, coords }) => {
     77: <TiWeatherSnow />, // Snow grains
 
     // 🌦️ Rain Showers
-    80: <TiWeatherDownpour />, // Slight rain showers
-    81: <TiWeatherDownpour />, // Moderate rain showers
-    82: <TiWeatherDownpour />, // Violent rain showers
+    80: <BsCloudRain />, // Slight rain showers
+    81: <BsCloudRainHeavy />, // Moderate rain showers
+    82: <BsCloudRainHeavy />, // Violent rain showers
 
     // ❄️ Snow Showers
     85: <TiWeatherSnow />, // Slight snow showers
@@ -165,33 +177,35 @@ const Weather = ({ city, coords }) => {
     const hour = String(baseHour + n).padStart(2, "0");
 
     return (
-      <div className="w-2/10 h-full  flex flex-col items-center">
-        <p className="font-extrabold pb-2">{hour}:00</p>
-        <p className="text-4xl md:text-6xl">
+      <div className="w-2/10 h-full flex flex-col items-center">
+        <p className="font-txtBold font-extrabold pb-2">{hour}:00</p>
+        <p className="text-3xl">
           {
             WEATHER_CODE_DESCRIPTIONS[
               weatherData.weatherData.weather_code[index + n]
             ]
           }
         </p>
-        <p className="flex flex-row items-center text-base md:text-xl">
-          {weatherData.weatherData.temperature_2m[index + n]}
-          <p className="text-[8px]">°</p>
+        <p className="flex flex-row items-center text-xl md:text-xl font-txtBold font-extrabold ">
+          {weatherData.weatherData.temperature_2m[index + n]}°
         </p>
         <p className="flex flex-row items-center">
           {weatherData.weatherData.wind_speed_10m[index + n]}
-          <p className="text-[8px]">km/h</p>
+          <p className="text-xs">km/h</p>
         </p>
-        <p className="flex flex-row items-center gap-1 ">
+        <p className="flex flex-row items-center gap-1 font-txtBold text-xs font-extrabold">
           <BsCloudRain />
           {weatherData.weatherData.precipitation_probability[index + n]}%
+        </p>
+        <p className="flex flex-row items-center gap-1 font-txtBold text-xs font-extrabold">
+          {getDirection(weatherData.weatherData.wind_direction_10m[index + n])}
         </p>
       </div>
     );
   });
   return (
     <>
-      <div className="w-full h-2/12 flex flex-col items-center justify-center ">
+      <div className=" w-full h-auto py-3 flex flex-col items-center justify-center font-txtBold">
         <h1 className="flex flex-row items-center">
           {icons && (
             <p className="mr-4">
@@ -200,44 +214,42 @@ const Weather = ({ city, coords }) => {
           )}
           {activeCity.name} {!icons && `(${activeCity.country_code})`}
         </h1>
-        <h3>Today</h3>
+        <h3>{currentTimeHourly}</h3>
+        <p className="text-[8px]">Last Update at {times}</p>
       </div>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <div className="w-full flex flex-col h-4/12 items-center justify-center">
+      <div className="w-full flex flex-col py-6 items-center justify-center">
         <div className="flex flex-col items-center">
-          <p className="text-6xl md:text-8xl">
+          <p className="text-8xl">
             {
               WEATHER_CODE_DESCRIPTIONS[
                 weatherData.weatherData.weather_code[index]
               ]
             }
           </p>
-          <div className="flex flex-row">
-            <p className="text-5xl md:text-8xl font-extrabold">
-              {weatherData.weatherData.temperature_2m[index]}
+          <div className="flex flex-row font-txtBold font-bold">
+            <p className="text-8xl">
+              {weatherData.weatherData.temperature_2m[index]}°
             </p>
-            <p className="text-4xl">°</p>
           </div>
         </div>
         <div className="flex flex-col items-center">
           <p>
             Feel like: {weatherData.weatherData.apparent_temperature[index]}°
           </p>
-          <p className="flex flex-row">
-            <MdOutlineVisibility className="w-8 h-auto px-2" /> {visibility_km}
-            km
-          </p>
 
+          <p className="flex flex-row">visibility: {visibility_km}km</p>
           <p className="flex flex-row">
-            {getDirection(weatherData.weatherData.wind_direction_10m[index])}
-            <LuWind className="w-8 h-auto px-2" />
+            <a className="font-txtBold font-bold">
+              {getDirection(weatherData.weatherData.wind_direction_10m[index])}
+            </a>
+            <LuWind className="w-7 h-auto px-2" />
             {weatherData.weatherData.wind_speed_10m[index]} km/h
           </p>
         </div>
       </div>
-      <div className=" w-full h-2/12"></div>
-      <div className=" h-4/12 w-full md:h-60">
-        <div className="w-full h-10/10 flex flex-row justify-center items-center gap-1 ">
+      <div className="h-auto w-full py-4 md:mt-10">
+        <div className="w-full h-10/10 flex flex-row justify-center items-center gap-1">
           {hourForecast}
         </div>
       </div>

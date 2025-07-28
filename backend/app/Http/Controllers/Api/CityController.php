@@ -14,10 +14,13 @@ class CityController extends Controller
         $query = $request->input('q');
 
         $cities = DB::table('cities')
+            ->select('name', 'country_code', DB::raw('MIN(latitude) as latitude'), DB::raw('MIN(longitude) as longitude'))
             ->where('name', 'like', '%' . $query . '%')
-            ->orderBy('population', 'desc')
+            ->groupBy('name', 'country_code') // group by name + country code
+            ->orderByDesc('population')
             ->limit(20)
             ->get();
+
 
             return response()->json([
                 'cities' => $cities,
