@@ -11,6 +11,10 @@ Upcoming upgrades and new enhancements (like multi-country support and rain grap
 
 Feel free to fork, explore, or contribute — your insights are always welcome.
 
+## Live View
+
+**URL:** [weather.aurelienj.ch](https://weather.aurelienj.ch)
+
 ## Contact
 
 Feel free to reach out with questions, feedback, or ideas:
@@ -63,15 +67,6 @@ Currently supports forecast data for Switzerland, France, and the UK — with up
 
 - **Open-Meteo docs:**  
   [0penmete0.md](https://github.com/aurelien404/Forecast-weather/blob/main/Docs/0penmete0.md) — Personnal docs about Open Meteo Api.
-
-## Features
-
-- Search by city name
-- Fetch current + 7-day forecasts
-- Uses GeoNames for location lookup
-- Stylish icons with React Icons
-- React frontend with tailwindcss
-- Laravel backend with RESTful endpoints
 
 ## Installation
 
