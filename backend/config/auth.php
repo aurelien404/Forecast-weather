@@ -2,8 +2,8 @@
 
 return [
     'defaults' => [
-        'guard' => null,
-        'passwords' => null,
+    'guard' => 'web',
+    'passwords' => 'users',
     ],
 
     'guards' => [],
