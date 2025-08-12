@@ -4,6 +4,12 @@
 
 @import "tailwindcss";
 
+@layer base {
+  body {
+    @apply bg-[#030303] bg-[url('/assets/foggy-landscape.jpg')] bg-cover bg-center bg-no-repeat bg-fixed backdrop-brightness-50 md:backdrop-brightness-20;
+  }
+}
+
 @theme {
   --font-ShareTech: "Share Tech", sans-serif;
   --font-txtBold: "Kanit", sans-serif;
@@ -14,14 +20,6 @@
 }
 /* sunny-landscape.png */
 body {
-  background-color: #030303;
-  background-image: url("/assets/foggy-landscape.jpg "); /* Adjust path if using src/assets */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  backdrop-filter: brightness(50%);
-
   font-family: var(--font-ShareTech);
   font-size: 0.75rem;
   color: var(--color-zzbase);
@@ -62,4 +60,20 @@ h2 {
 }
 h3 {
   @apply text-sm md:text-xl;
+}
+
+@layer utilities {
+  @keyframes slide-in {
+    from {
+      transform: translateX(0%);
+    }
+
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-slideIn {
+    animation: slide-in 0 infinite;
+  }
 }

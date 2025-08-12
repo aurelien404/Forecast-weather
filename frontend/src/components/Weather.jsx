@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+import HourlyJsx from "./Hourly_Weather";
+import DailyJsx from "./Daily_Weather";
+
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { LuWind } from "react-icons/lu"; // wind logo
 import { IoSunnyOutline } from "react-icons/io5"; // sunny
@@ -167,42 +171,17 @@ const Weather = ({ city, coords }) => {
   if (!weatherData) {
     return <p>Loading weather data...</p>;
   }
+
   const index = weatherData.weatherData.time.indexOf(currentTimeIso) + 1;
 
   const visibility = weatherData?.weatherData?.visibility?.[index] ?? 0;
   const visibility_km = Math.floor(visibility / 1000);
-  const forecast = [1, 2, 3, 4, 5];
-  const baseHour = currentTime.getHours();
-  const hourForecast = forecast.map((n) => {
-    const hour = String(baseHour + n).padStart(2, "0");
 
-    return (
-      <div className="w-2/10 h-full flex flex-col items-center">
-        <p className="font-txtBold font-extrabold pb-2">{hour}:00</p>
-        <p className="text-3xl">
-          {
-            WEATHER_CODE_DESCRIPTIONS[
-              weatherData.weatherData.weather_code[index + n]
-            ]
-          }
-        </p>
-        <p className="flex flex-row items-center text-xl md:text-xl font-txtBold font-extrabold ">
-          {weatherData.weatherData.temperature_2m[index + n]}°
-        </p>
-        <p className="flex flex-row items-center">
-          {weatherData.weatherData.wind_speed_10m[index + n]}
-          <p className="text-xs">km/h</p>
-        </p>
-        <p className="flex flex-row items-center gap-1 font-txtBold text-xs font-extrabold">
-          <BsCloudRain />
-          {weatherData.weatherData.precipitation_probability[index + n]}%
-        </p>
-        <p className="flex flex-row items-center gap-1 font-txtBold text-xs font-extrabold">
-          {getDirection(weatherData.weatherData.wind_direction_10m[index + n])}
-        </p>
-      </div>
-    );
-  });
+  const now = new Date().toISOString().slice(0, 13); // "2025-08-12T21"
+  const findex = weatherData.weatherData.time.findIndex((t) =>
+    t.startsWith(now)
+  );
+
   return (
     <>
       <div className=" w-full h-auto py-3 flex flex-col items-center justify-center font-txtBold">
@@ -221,37 +200,46 @@ const Weather = ({ city, coords }) => {
       <div className="w-full flex flex-col py-6 items-center justify-center">
         <div className="flex flex-col items-center">
           <p className="text-8xl">
-            {
-              WEATHER_CODE_DESCRIPTIONS[
-                weatherData.weatherData.weather_code[index]
-              ]
-            }
+            {WEATHER_CODE_DESCRIPTIONS[weatherData.currentWeather.weathercode]}
           </p>
           <div className="flex flex-row font-txtBold font-bold">
             <p className="text-8xl">
-              {weatherData.weatherData.temperature_2m[index]}°
+              {weatherData.currentWeather.temperature}°
             </p>
           </div>
         </div>
         <div className="flex flex-col items-center">
           <p>
-            Feel like: {weatherData.weatherData.apparent_temperature[index]}°
+            Feel like: {weatherData.weatherData.apparent_temperature[findex]}°
           </p>
 
           <p className="flex flex-row">visibility: {visibility_km}km</p>
           <p className="flex flex-row">
             <a className="font-txtBold font-bold">
-              {getDirection(weatherData.weatherData.wind_direction_10m[index])}
+              {getDirection(weatherData.currentWeather.winddirection)}
             </a>
             <LuWind className="w-7 h-auto px-2" />
-            {weatherData.weatherData.wind_speed_10m[index]} km/h
+            {weatherData.currentWeather.windspeed} km/h
           </p>
         </div>
       </div>
-      <div className="h-auto w-full py-4 md:mt-10">
-        <div className="w-full h-10/10 flex flex-row justify-center items-center gap-1">
-          {hourForecast}
-        </div>
+      <div className="h-auto w-screen md:w-full py-4 ">
+        <HourlyJsx
+          weatherData={weatherData.weatherData}
+          index={index}
+          currentTime={currentTime}
+          getDirection={getDirection}
+          WEATHER_CODE_DESCRIPTIONS={WEATHER_CODE_DESCRIPTIONS}
+        />
+      </div>
+
+      <div className="h-auto w-full py-4 ">
+        <DailyJsx
+          weatherDay={weatherData.weatherDay}
+          getDirection={getDirection}
+          WEATHER_CODE_DESCRIPTIONS={WEATHER_CODE_DESCRIPTIONS}
+          currentTime={currentTime}
+        />
       </div>
       <button onClick={updateCity} className="hidden">
         Update Localisation City

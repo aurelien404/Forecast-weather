@@ -3,6 +3,7 @@ import CitySearch from "./components/CitySearch";
 import Weather from "./components/Weather";
 import { useGeolocated } from "react-geolocated";
 import { MdCopyright } from "react-icons/md";
+import { CiLocationArrow1 } from "react-icons/ci";
 
 function App() {
   const [selectedCity, setSelectedCity] = useState(null);
@@ -15,17 +16,24 @@ function App() {
 
   return (
     <>
-      <div className="w-auto h-auto  absolute right-5 bottom-1 font-pixel p-0 m-0">
-        <a
-          href="https://aurelienj.ch"
-          className="flex flex-row items-center gap-1 text-zzlink"
-        >
-          <MdCopyright />
-          www.aurelienj.ch
-        </a>
+      <div className="fixed top-0 right-0 mx-auto w-full md:w-5/12 hidden flex-col justify-between p-5 bg-zzcontrast">
+        <p className="text-[8px]">
+          *Countries available: Switzerland, France, and the United Kingdom
+        </p>
+        <CitySearch onCitySelect={setSelectedCity} />
       </div>
-      <div className="flex flex-col gap-2 p-5 w-full md:w-5/12 mx-auto h-screen overflow-hidden">
-        <div className="h-9/10">
+
+      <div className="flex flex-col gap-2 p-5 h-auto w-full md:w-5/12 mx-auto overflow-hidden ">
+        <div className="font-pixel text-sm">
+          <a
+            href="https://aurelienj.ch"
+            className="flex flex-row items-center gap-1 text-zzlink"
+          >
+            <MdCopyright />
+            www.aurelienj.ch
+          </a>
+        </div>
+        <div>
           <Weather
             city={selectedCity}
             coords={
@@ -34,12 +42,6 @@ function App() {
                 : null
             }
           />
-        </div>
-        <div className="absolute left-0 md:left-auto bottom-0 w-full md:w-5/12 flex flex-col justify-between p-5">
-          <CitySearch onCitySelect={setSelectedCity} />
-          <p className="text-[8px]">
-            *Countries available: Switzerland, France, and the United Kingdom
-          </p>
         </div>
       </div>
     </>

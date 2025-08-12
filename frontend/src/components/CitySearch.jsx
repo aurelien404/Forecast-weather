@@ -33,7 +33,7 @@ const CitySearch = ({ onCitySelect }) => {
     <div className="w-full font-txtBold">
       {showList && (
         <ul
-          className={`bg-zzlink border-zzlink absolute bottom-20 max-h-screen overflow-scroll left-5 right-5 border-2 p-5 z-10`}
+          className={`bg-zzlink border-zzlink absolute top-25 max-h-screen overflow-scroll left-5 right-5 border-2 p-5 z-10`}
         >
           {cities.map((city) => (
             <li key={`${city.name}-${city.latitude}-${city.longitude}`}>

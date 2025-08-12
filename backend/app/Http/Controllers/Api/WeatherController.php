@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
@@ -28,6 +29,7 @@ class WeatherController extends Controller
                         'latitude' => $latitude,
                         'longitude' => $longitude,
                         'timezone' => 'Europe/Zurich',
+
                         'hourly' => implode(',', [
                             'temperature_2m',
                             'rain',
@@ -38,6 +40,21 @@ class WeatherController extends Controller
                             'wind_direction_10m',
                             'visibility'
                         ]),
+                        'daily' => implode(',', [
+                            'temperature_2m_min',
+                            'temperature_2m_max',
+                            'apparent_temperature_min',
+                            'apparent_temperature_max',
+                            'precipitation_sum',
+                            'precipitation_probability_max',
+                            'wind_speed_10m_max',
+                            'wind_gusts_10m_max',
+                            'wind_direction_10m_dominant',
+                            'weather_code'
+                        ]),
+                        'current_weather' => true
+
+
                     ]
                 ]);
 
@@ -45,6 +62,8 @@ class WeatherController extends Controller
 
                 return response()->json([
                     'weatherData' => $data['hourly'],
+                    'weatherDay' => $data['daily'],
+                    'currentWeather' => $data['current_weather'],
                     'cityName' => $cityName
                 ]);
             } catch (\Exception $e) {
