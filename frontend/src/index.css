@@ -5,8 +5,8 @@
 @import "tailwindcss";
 
 @layer base {
-  body {
-    @apply bg-[#030303] bg-[url('/assets/foggy-landscape.jpg')] bg-cover bg-center bg-no-repeat bg-fixed backdrop-brightness-50 md:backdrop-brightness-20;
+  .bg_box {
+    @apply bg-[url('/assets/foggy-landscape.jpg')] bg-cover bg-center bg-no-repeat bg-fixed opacity-40;
   }
 }
 
@@ -15,11 +15,13 @@
   --font-txtBold: "Kanit", sans-serif;
   --font-pixel: "Pixelify Sans", "sans-serif";
   --color-zzbase: #f0f0f0;
+  --color-opabase: #ffffff34;
   --color-zzcontrast: #030303;
   --color-zzlink: #646cff;
 }
 /* sunny-landscape.png */
 body {
+  background-color: #000000;
   font-family: var(--font-ShareTech);
   font-size: 0.75rem;
   color: var(--color-zzbase);

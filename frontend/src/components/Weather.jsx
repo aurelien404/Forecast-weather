@@ -7,12 +7,14 @@ import DailyJsx from "./Daily_Weather";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { LuWind } from "react-icons/lu"; // wind logo
 import { IoSunnyOutline } from "react-icons/io5"; // sunny
-import { MdOutlineCloud } from "react-icons/md"; // cloudy
-import { WiDaySunnyOvercast } from "react-icons/wi"; // partly sunny
+import { IoIosCloudOutline } from "react-icons/io"; // cloudy
+import { IoPartlySunnyOutline } from "react-icons/io5"; // partly sunny
 import { BsCloudRain } from "react-icons/bs"; //light rain
 import { BsCloudRainHeavy } from "react-icons/bs"; // heavy rain
 import { TiWeatherSnow } from "react-icons/ti"; // snowy
 import { TiWeatherStormy } from "react-icons/ti"; // storm
+
+import { TiLocationArrow } from "react-icons/ti";
 
 const Weather = ({ city, coords }) => {
   const [weatherData, setWeatherData] = useState(null);
@@ -48,12 +50,12 @@ const Weather = ({ city, coords }) => {
     // ☀️ Clear & Cloudy
     0: <IoSunnyOutline />, // Clear sky
     1: <IoSunnyOutline />, // Mainly clear
-    2: <WiDaySunnyOvercast />, // Partly cloudy
-    3: <MdOutlineCloud />, // Overcast
+    2: <IoPartlySunnyOutline />, // Partly cloudy
+    3: <IoIosCloudOutline />, // Overcast
 
     // 🌫️ Fog & Atmospheric
-    45: <MdOutlineCloud />, // Fog
-    48: <MdOutlineCloud />, // Depositing rime fog
+    45: <IoIosCloudOutline />, // Fog
+    48: <IoIosCloudOutline />, // Depositing rime fog
 
     // 🌧️ Drizzle
     51: <BsCloudRain />, // Light drizzle
@@ -114,10 +116,10 @@ const Weather = ({ city, coords }) => {
   }
 
   const fallbackCity = {
-    name: "Lausanne",
-    latitude: 46.5197,
-    longitude: 6.6323,
-    country_code: "CH",
+    name: "Ullapool",
+    latitude: 57.9013998,
+    longitude: -5.1602129,
+    country_code: "GB",
   };
 
   const [activeCity, setActiveCity] = useState(city || fallbackCity);
@@ -182,6 +184,8 @@ const Weather = ({ city, coords }) => {
     t.startsWith(now)
   );
 
+  const zero = -45 + weatherData.currentWeather.winddirection;
+
   return (
     <>
       <div className=" w-full h-auto py-3 flex flex-col items-center justify-center font-txtBold">
@@ -213,13 +217,22 @@ const Weather = ({ city, coords }) => {
             Feel like: {weatherData.weatherData.apparent_temperature[findex]}°
           </p>
 
-          <p className="flex flex-row">visibility: {visibility_km}km</p>
-          <p className="flex flex-row">
-            <a className="font-txtBold font-bold">
-              {getDirection(weatherData.currentWeather.winddirection)}
-            </a>
+          <p className="flex flex-row items-center">
+            visibility: {visibility_km}
+            <span className="text-[8px]">km</span>
+          </p>
+          <p className="flex flex-row items-center gap-1">
             <LuWind className="w-7 h-auto px-2" />
-            {weatherData.currentWeather.windspeed} km/h
+            <TiLocationArrow
+              style={{
+                transform: `rotate(${zero}deg)`,
+              }}
+              className="transition-transform"
+            />
+            <p>
+              {weatherData.currentWeather.windspeed}{" "}
+              <span className="text-[8px]">km/h</span>
+            </p>
           </p>
         </div>
       </div>
@@ -227,8 +240,8 @@ const Weather = ({ city, coords }) => {
         <HourlyJsx
           weatherData={weatherData.weatherData}
           index={index}
-          currentTime={currentTime}
           getDirection={getDirection}
+          currentTime={currentTime}
           WEATHER_CODE_DESCRIPTIONS={WEATHER_CODE_DESCRIPTIONS}
         />
       </div>

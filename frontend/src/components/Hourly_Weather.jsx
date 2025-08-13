@@ -1,12 +1,12 @@
 // Hourly.jsx
 import React from "react";
 import { BsCloudRain } from "react-icons/bs";
+import { TiLocationArrow } from "react-icons/ti";
 
 const Hourly = ({
   weatherData,
   index,
   currentTime,
-  getDirection,
   WEATHER_CODE_DESCRIPTIONS,
 }) => {
   const forecast = Array.from({ length: 12 }, (_, i) => i + 1);
@@ -19,28 +19,33 @@ const Hourly = ({
           const hour = String((baseHour + n) % 24).padStart(2, "0");
           const i = index + n;
 
+          const zero = -45 + weatherData.wind_direction_10m[i];
+
           return (
             <div
               key={i}
               className="w-2/12 md:w-1/12 h-full flex flex-col items-center"
             >
               <p className="font-txtBold font-extrabold pb-2">{hour}:00</p>
-              <p className="text-3xl">
+              <p className="text-2xl">
                 {WEATHER_CODE_DESCRIPTIONS[weatherData.weather_code[i]]}
               </p>
               <p className="flex flex-row items-center text-xl md:text-xl font-txtBold font-extrabold">
                 {weatherData.temperature_2m[i]}°
               </p>
-              <div className="flex flex-row items-center">
+              <div className="flex flex-row gap-1 items-center">
+                <TiLocationArrow
+                  style={{
+                    transform: `rotate(${zero}deg)`,
+                  }}
+                  className="transition-transform"
+                />
                 <p>{weatherData.wind_speed_10m[i]}</p>
-                <span className="text-xs ml-1">km/h</span>
+                <span className="text-[8px]">km/h</span>
               </div>
-              <p className="flex flex-row items-center gap-1 font-txtBold text-xs font-extrabold">
+              <p className="flex flex-row items-center gap-3 font-txtBold text-xs font-extrabold">
                 <BsCloudRain />
                 {weatherData.precipitation_probability[i]}%
-              </p>
-              <p className="flex flex-row items-center gap-1 font-txtBold text-xs font-extrabold">
-                {getDirection(weatherData.wind_direction_10m[i])}
               </p>
             </div>
           );

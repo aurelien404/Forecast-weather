@@ -16,23 +16,15 @@ function App() {
 
   return (
     <>
-      <div className="fixed top-0 right-0 mx-auto w-full md:w-5/12 hidden flex-col justify-between p-5 bg-zzcontrast">
+      <div className="fixed top-0 right-0 mx-auto w-full md:w-5/12 hidden flex-col justify-between bg-zzcontrast">
         <p className="text-[8px]">
           *Countries available: Switzerland, France, and the United Kingdom
         </p>
         <CitySearch onCitySelect={setSelectedCity} />
       </div>
 
+      <div className="fixed top-0 left-0 -z-1 bg_box w-screen h-screen"></div>
       <div className="flex flex-col gap-2 p-5 h-auto w-full md:w-5/12 mx-auto overflow-hidden ">
-        <div className="font-pixel text-sm">
-          <a
-            href="https://aurelienj.ch"
-            className="flex flex-row items-center gap-1 text-zzlink"
-          >
-            <MdCopyright />
-            www.aurelienj.ch
-          </a>
-        </div>
         <div>
           <Weather
             city={selectedCity}
@@ -42,6 +34,16 @@ function App() {
                 : null
             }
           />
+        </div>
+        <div className="w-full flex flex-col justify-center items-center font-pixel text-sm py-5">
+          <a
+            href="https://aurelienj.ch"
+            className=" flex flex-row items-center gap-1 text-zzlink"
+          >
+            <MdCopyright />
+            www.aurelienj.ch
+          </a>
+          <p>open-weather V1.3</p>
         </div>
       </div>
     </>
