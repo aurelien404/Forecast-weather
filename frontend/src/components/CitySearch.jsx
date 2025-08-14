@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api";
 
-const CitySearch = ({ onCitySelect }) => {
+const CitySearch = ({ onCitySelect, onClick }) => {
   const [query, setQuery] = useState("");
   const [cities, setCities] = useState([]);
   const [error, setError] = useState("");
@@ -9,12 +9,9 @@ const CitySearch = ({ onCitySelect }) => {
 
   const handleSearch = async () => {
     try {
-      const res = await axios.get(
-        "http://192.168.1.177:8000/api/cities/search",
-        {
-          params: { q: query },
-        }
-      );
+      const res = await api.get("/cities/search", {
+        params: { q: query },
+      });
       setCities(res.data.cities);
       setError("");
     } catch (err) {
@@ -33,7 +30,7 @@ const CitySearch = ({ onCitySelect }) => {
     <div className="w-full font-txtBold">
       {showList && (
         <ul
-          className={`bg-zzlink border-zzlink absolute top-25 max-h-screen overflow-scroll left-5 right-5 border-2 p-5 z-10`}
+          className={`bg-zzlink border-zzlink absolute top-20 md:w-5/12 md:mx-auto max-h-screen overflow-scroll left-2 right-2 border-2 p-5 z-19`}
         >
           {cities.map((city) => (
             <li key={`${city.name}-${city.latitude}-${city.longitude}`}>
@@ -45,6 +42,7 @@ const CitySearch = ({ onCitySelect }) => {
                   onCitySelect(city);
                   setShowList(false);
                   setQuery("");
+                  onClick(false);
                 }}
               >
                 {city.name} ({city.country_code})
@@ -61,7 +59,7 @@ const CitySearch = ({ onCitySelect }) => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button className="w-3/7 ml-auto" onClick={handleSearch}>
+        <button className="btn w-3/7 ml-auto" onClick={handleSearch}>
           Search
         </button>
       </div>

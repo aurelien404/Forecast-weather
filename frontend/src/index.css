@@ -6,7 +6,7 @@
 
 @layer base {
   .bg_box {
-    @apply bg-[url('/assets/foggy-landscape.jpg')] bg-cover bg-center bg-no-repeat bg-fixed opacity-40;
+    @apply h-screen bg-[url('/assets/forest-landscape.jpg')] bg-cover bg-center bg-no-repeat bg-fixed opacity-40;
   }
 }
 
@@ -28,13 +28,16 @@ body {
 }
 
 input:hover,
-input:active,
-button:active,
-button:hover {
+input:active {
   border-color: var(--color-zzlink);
   background-color: var(--color-zzlink);
   color: var(--color-zzbase);
   @apply border-2 hover:scale-101 active:scale-98;
+}
+
+button:active,
+button:hover {
+  @apply hover:scale-105 active:scale-95;
 }
 
 input,
@@ -46,7 +49,7 @@ button {
 }
 
 input,
-button {
+.btn {
   @apply border-2 py-2 px-5 transition-all ease-out duration-150;
 }
 

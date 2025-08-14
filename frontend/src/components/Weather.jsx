@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 import HourlyJsx from "./Hourly_Weather";
 import DailyJsx from "./Daily_Weather";
@@ -117,8 +117,8 @@ const Weather = ({ city, coords }) => {
 
   const fallbackCity = {
     name: "Ullapool",
-    latitude: 57.9013998,
-    longitude: -5.1602129,
+    latitude: 57.8954,
+    longitude: 5.1613,
     country_code: "GB",
   };
 
@@ -154,8 +154,8 @@ const Weather = ({ city, coords }) => {
 
   useEffect(() => {
     if (!activeCity) return;
-    axios
-      .get("http://192.168.1.177:8000/api/weather", {
+    api
+      .get("/weather", {
         params: {
           lat: activeCity.latitude,
           lon: activeCity.longitude,
@@ -179,7 +179,7 @@ const Weather = ({ city, coords }) => {
   const visibility = weatherData?.weatherData?.visibility?.[index] ?? 0;
   const visibility_km = Math.floor(visibility / 1000);
 
-  const now = new Date().toISOString().slice(0, 13); // "2025-08-12T21"
+  const now = new Date().toISOString().slice(0, 13);
   const findex = weatherData.weatherData.time.findIndex((t) =>
     t.startsWith(now)
   );
@@ -221,7 +221,7 @@ const Weather = ({ city, coords }) => {
             visibility: {visibility_km}
             <span className="text-[8px]">km</span>
           </p>
-          <p className="flex flex-row items-center gap-1">
+          <div className="flex flex-row items-center gap-1">
             <LuWind className="w-7 h-auto px-2" />
             <TiLocationArrow
               style={{
@@ -233,7 +233,7 @@ const Weather = ({ city, coords }) => {
               {weatherData.currentWeather.windspeed}{" "}
               <span className="text-[8px]">km/h</span>
             </p>
-          </p>
+          </div>
         </div>
       </div>
       <div className="h-auto w-screen md:w-full py-4 ">
