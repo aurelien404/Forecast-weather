@@ -13,13 +13,7 @@ Feel free to fork, explore, or contribute — your insights are always welcome.
 
 ## Live View
 
-**URL:** [weather.aurelienj.ch](https://weather.aurelienj.ch)
-
-## Contact
-
-Feel free to reach out with questions, feedback, or ideas:
-
-**Email:** [contact@aurelienj.ch](mailto:contact@aurelienj.ch)
+**URL:** [weather.aurelienj.ch](https://w8ther.com)
 
 ## Weather Pictures — A Simple Weather Dashboard
 
@@ -41,16 +35,23 @@ Currently supports forecast data for Switzerland, France, and the UK — with up
 - [x] Core UI functional and app working end-to-end
 - [x] Format and normalize Weather API responses
 - [x] Create display components for forecast data
+- [x] Support French and English using i18Next
 
 ## Next Steps / Ideas
 
-- [ ] Integrate precipitation graph (rain data visualization)
+- [ ] Integrate precipitation for next days (rain data visualization)
 - [ ] Add support for more countries (currently limited to Switzerland, France, and the UK)
 - [ ] Add unit toggle (metric/imperial)
 - [ ] Save user preferences (localStorage or cookies)
 - [ ] ...
 
 ## Data Sources
+
+### License
+
+This project is licensed under the [MIT License](./LICENSE.md).  
+Feel free to use, modify, and distribute it with proper attribution.
+@aurelien404.
 
 ### Tools
 
@@ -74,18 +75,4 @@ Currently supports forecast data for Switzerland, France, and the UK — with up
 
 ```bash
 git clone https://github.com/your-username/laravel-weather-app.git
-```
-
-# Install and run backend
-
-```bash
-cd Forecast-App/backend
-composer install && cp .env.example .env && php artisan key:generate && php artisan serve
-```
-
-# Install and run frontend
-
-```bash
-cd ../frontend
-npm install && npm run dev
 ```

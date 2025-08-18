@@ -63,12 +63,13 @@ function App() {
         <div className="w-full flex flex-col justify-center items-center font-pixel text-sm py-5">
           <a
             href="https://aurelienj.ch"
-            className=" flex flex-row items-center gap-1 text-zzlink"
+            className=" flex flex-row items-center gap-1 py-5 text-zzlink"
           >
             <MdCopyright />
             www.aurelienj.ch
           </a>
-          <p>open-weather V1.3</p>
+          <p>api: open-meteo.com & geonames.org</p>
+          <p>w8ther.com V1.3</p>
         </div>
       </div>
     </>
