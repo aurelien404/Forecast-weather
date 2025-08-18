@@ -26,24 +26,25 @@ const Hourly = ({
               key={i}
               className="w-2/12 md:w-1/12 h-full flex flex-col items-center"
             >
-              <p className="font-txtBold font-extrabold pb-2">{hour}:00</p>
+              <p className="font-txtBold font-bold pb-2">{hour}:00</p>
               <p className="text-2xl">
                 {WEATHER_CODE_DESCRIPTIONS[weatherData.weather_code[i]]}
               </p>
-              <p className="flex flex-row items-center text-xl md:text-xl font-txtBold font-extrabold">
+              <p className="flex flex-row items-center text-xl md:text-xl font-txtBold font-bold">
                 {weatherData.temperature_2m[i]}°
               </p>
-              <div className="flex flex-row gap-1 items-center">
+              <div className="flex flex-row items-center">
                 <TiLocationArrow
+                  size={15}
                   style={{
                     transform: `rotate(${zero}deg)`,
                   }}
-                  className="transition-transform"
+                  className="mx-1 transition-transform"
                 />
                 <p>{weatherData.wind_speed_10m[i]}</p>
                 <span className="text-[8px]">km/h</span>
               </div>
-              <p className="flex flex-row items-center gap-3 font-txtBold text-xs font-extrabold">
+              <p className="flex flex-row items-center gap-3 font-txtBold text-xs font-bold">
                 <BsCloudRain />
                 {weatherData.precipitation_probability[i]}%
               </p>

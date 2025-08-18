@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { FaSearchLocation } from "react-icons/fa";
+
 import api from "../api";
 
 const CitySearch = ({ onCitySelect, onClick }) => {
@@ -6,6 +9,7 @@ const CitySearch = ({ onCitySelect, onClick }) => {
   const [cities, setCities] = useState([]);
   const [error, setError] = useState("");
   const [showList, setShowList] = useState(false);
+  const { t } = useTranslation();
 
   const handleSearch = async () => {
     try {
@@ -55,12 +59,12 @@ const CitySearch = ({ onCitySelect, onClick }) => {
         <input
           className="w-full"
           type="text"
-          placeholder="Search for a city"
+          placeholder={t("searchfor")}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button className="btn w-3/7 ml-auto" onClick={handleSearch}>
-          Search
+        <button className="btn ml-auto" onClick={handleSearch}>
+          <FaSearchLocation />
         </button>
       </div>
 

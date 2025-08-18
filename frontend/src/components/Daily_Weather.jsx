@@ -1,4 +1,6 @@
 //Daily.jsx
+import { useTranslation } from "react-i18next";
+
 import { TbTemperatureMinus } from "react-icons/tb";
 import { TbTemperaturePlus } from "react-icons/tb";
 import { FaWind } from "react-icons/fa6";
@@ -11,7 +13,12 @@ const Daily = ({
   getDirection,
   WEATHER_CODE_DESCRIPTIONS,
   currentTime,
+  i18n,
 }) => {
+  const { t } = useTranslation();
+  const lang = i18n;
+  console.log("Daily.jsx i18n = ", lang);
+
   const forecast = Array.from({ length: 7 }, (_, i) => i); // 0 to 6
   const currentDay = `${currentTime.getUTCFullYear()}-${String(
     currentTime.getUTCMonth() + 1
@@ -25,12 +32,15 @@ const Daily = ({
           const date = new Date(startDate);
           date.setDate(startDate.getDate() + index);
 
-          let dayMonth = date.toLocaleDateString("en-GB", {
-            weekday: "short",
-          });
+          let dayMonth = date.toLocaleDateString(
+            lang === "en" ? "en-GB" : "fr-FR",
+            {
+              weekday: "short",
+            }
+          );
 
           if (index === 0) {
-            dayMonth = "Now";
+            dayMonth = t("now");
           }
           const zero = -45 + weatherDay.wind_direction_10m_dominant[index];
 
@@ -39,7 +49,7 @@ const Daily = ({
               key={index}
               className="w-full h-auto p-2 flex flex-row items-center justify-around gap-2 md:gap-4 bg-opabase rounded"
             >
-              <div className="w-1/6 flex items-center px-2 text-base font-extrabold">
+              <div className="w-1/6 flex items-center px-2 text-base font-bold">
                 <h4>{dayMonth}</h4>
               </div>
               <div className="w-1/6 flex flex-row items-center justify-center md:px-2 text-2xl">

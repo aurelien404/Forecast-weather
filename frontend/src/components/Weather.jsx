@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import api from "../api";
 
+import { useTranslation } from "react-i18next";
+
 import HourlyJsx from "./Hourly_Weather";
 import DailyJsx from "./Daily_Weather";
 
@@ -16,7 +18,9 @@ import { TiWeatherStormy } from "react-icons/ti"; // storm
 
 import { TiLocationArrow } from "react-icons/ti";
 
-const Weather = ({ city, coords }) => {
+const Weather = ({ i18n, city, coords }) => {
+  const { t } = useTranslation();
+
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState("");
   const [icons, setIcons] = useState(false);
@@ -165,13 +169,11 @@ const Weather = ({ city, coords }) => {
       .then((res) => {
         setWeatherData(res.data);
       })
-      .catch((err) =>
-        setError(err.response?.data?.error || "Something went wrong")
-      );
+      .catch((err) => setError(err.response?.data?.error || t("error")));
   }, [activeCity]);
 
   if (!weatherData) {
-    return <p>Loading weather data...</p>;
+    return <p>{t("loading")}</p>;
   }
 
   const index = weatherData.weatherData.time.indexOf(currentTimeIso) + 1;
@@ -198,7 +200,9 @@ const Weather = ({ city, coords }) => {
           {activeCity.name} {!icons && `(${activeCity.country_code})`}
         </h1>
         <h3>{currentTimeHourly}</h3>
-        <p className="text-[8px]">Last Update at {times}</p>
+        <p className="text-[8px]">
+          {t("update")} {times}
+        </p>
       </div>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <div className="w-full flex flex-col py-6 items-center justify-center">
@@ -214,16 +218,19 @@ const Weather = ({ city, coords }) => {
         </div>
         <div className="flex flex-col items-center">
           <p>
-            Feel like: {weatherData.weatherData.apparent_temperature[findex]}°
+            {t("feeling")}
+            {weatherData.weatherData.apparent_temperature[findex]}°
           </p>
 
-          <p className="flex flex-row items-center">
-            visibility: {visibility_km}
-            <span className="text-[8px]">km</span>
+          <p>
+            {t("visibility")}
+            {visibility_km}
+            <span className="text-[8px]"> km</span>
           </p>
           <div className="flex flex-row items-center gap-1">
-            <LuWind className="w-7 h-auto px-2" />
+            <LuWind size={15} />
             <TiLocationArrow
+              size={25}
               style={{
                 transform: `rotate(${zero}deg)`,
               }}
@@ -252,6 +259,7 @@ const Weather = ({ city, coords }) => {
           getDirection={getDirection}
           WEATHER_CODE_DESCRIPTIONS={WEATHER_CODE_DESCRIPTIONS}
           currentTime={currentTime}
+          i18n={i18n}
         />
       </div>
       <button onClick={updateCity} className="hidden">
