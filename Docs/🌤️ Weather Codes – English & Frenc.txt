@@ -1,0 +1,53 @@
+🌤️ Weather Codes – English & French
+
+Code | English Description                  | French Translation
+-----|--------------------------------------|----------------------------
+0    | Clear sky                            | Ciel clair
+1    | Mainly clear                         | Principalement clair
+2    | Partly cloudy                        | Partiellement nuageux
+3    | Overcast                             | Couvert
+
+🌫️ Fog & Atmospheric
+
+45   | Fog                                  | Brouillard
+48   | Depositing rime fog                  | Brouillard givrant
+
+🌧️ Drizzle
+
+51   | Light drizzle                        | Bruine légère
+53   | Moderate drizzle                     | Bruine modérée
+55   | Dense drizzle                        | Bruine dense
+56   | Light freezing drizzle               | Bruine verglaçante légère
+57   | Dense freezing drizzle               | Bruine verglaçante dense
+
+🌧️ Rain
+
+61   | Slight rain                          | Pluie faible
+63   | Moderate rain                        | Pluie modérée
+65   | Heavy rain                           | Pluie forte
+66   | Light freezing rain                  | Pluie verglaçante légère
+67   | Heavy freezing rain                  | Pluie verglaçante forte
+
+❄️ Snow
+
+71   | Slight snowfall                      | Chute de neige légère
+73   | Moderate snowfall                    | Chute de neige modérée
+75   | Heavy snowfall                       | Chute de neige abondante
+77   | Snow grains                          | Grains de neige
+
+🌦️ Rain Showers
+
+80   | Slight rain showers                  | Averses de pluie faibles
+81   | Moderate rain showers                | Averses de pluie modérées
+82   | Violent rain showers                 | Averses de pluie violentes
+
+❄️ Snow Showers
+
+85   | Slight snow showers                  | Averses de neige faibles
+86   | Heavy snow showers                   | Averses de neige fortes
+
+⛈️ Thunderstorms
+
+95   | Thunderstorm                         | Orage
+96   | Thunderstorm with slight hail        | Orage avec grêle légère
+99   | Thunderstorm with heavy hail         | Orage avec forte grêle

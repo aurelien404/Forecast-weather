@@ -61,15 +61,13 @@ function App() {
           />
         </div>
         <div className="w-full flex flex-col justify-center items-center font-pixel text-sm py-5">
+          <p>api: open-meteo.com & geonames.org | w8ther.com V1.3</p>
           <a
-            href="https://aurelienj.ch"
-            className=" flex flex-row items-center gap-1 py-5 text-zzlink"
+            href=" https://github.com/aurelien404/Forecast-weather/blob/main/Docs/LICENSE.md"
+            className=" flex flex-row items-center gap-1 text-zzlink"
           >
-            <MdCopyright />
-            www.aurelienj.ch
+            Copyright <MdCopyright /> 2025 aurelien404
           </a>
-          <p>api: open-meteo.com & geonames.org</p>
-          <p>w8ther.com V1.3</p>
         </div>
       </div>
     </>
