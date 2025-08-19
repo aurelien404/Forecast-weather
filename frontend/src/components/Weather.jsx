@@ -6,17 +6,48 @@ import { useTranslation } from "react-i18next";
 import HourlyJsx from "./Hourly_Weather";
 import DailyJsx from "./Daily_Weather";
 
-import { FaLocationCrosshairs } from "react-icons/fa6";
 import { LuWind } from "react-icons/lu"; // wind logo
-import { IoSunnyOutline } from "react-icons/io5"; // sunny
-import { IoIosCloudOutline } from "react-icons/io"; // cloudy
-import { IoPartlySunnyOutline } from "react-icons/io5"; // partly sunny
-import { BsCloudRain } from "react-icons/bs"; //light rain
-import { BsCloudRainHeavy } from "react-icons/bs"; // heavy rain
 import { TiWeatherSnow } from "react-icons/ti"; // snowy
-import { TiWeatherStormy } from "react-icons/ti"; // storm
 
+import { FaLocationCrosshairs } from "react-icons/fa6";
 import { TiLocationArrow } from "react-icons/ti";
+
+import SunnyIco from "../assets/Clear-sky.svg?react";
+import MainlyClearIco from "../assets/Mainly-clear.svg?react";
+import PartlyCloudyIco from "../assets/Partly-cloudy.svg?react";
+import OvercastIco from "../assets/Overcast.svg?react";
+
+import SlightRainIco from "../assets/Slight-rain.svg?react";
+import ModerateRainIco from "../assets/Moderate-rain.svg?react";
+import HeavyRainIco from "../assets/Heavy-rain.svg?react";
+
+import SlightRainShowersIco from "../assets/Slight-rain-showers.svg?react";
+import ModerateRainShowersIco from "../assets/Moderate-rain-showers.svg?react";
+import ViolentRainShowersIco from "../assets/Violent-rain-showers.svg?react";
+
+import LightDrizzleIco from "../assets/Light-drizzle.svg?react";
+import ModerateDrizzleIco from "../assets/Moderate-drizzle.svg?react";
+import DenseDrizzleIco from "../assets/Dense-drizzle.svg?react";
+
+import LightFreezingRainIco from "../assets/Light-freezing-rain.svg?react";
+import HeavyFreezingRainIco from "../assets/Heavy-freezing-rain.svg?react";
+
+import LightFreezingDrizzleIco from "../assets/Light-freezing-drizzle.svg?react";
+import DenseFreezingDrizzleIco from "../assets/Dense-freezing-drizzle.svg?react";
+
+import FogIco from "../assets/Fog.svg?react";
+import DepositingRimeFogIco from "../assets/Depositing-rime-fog.svg?react";
+
+import ThunderstormIco from "../assets/Thunderstorm.svg?react";
+import LightThunderstormIco from "../assets/Thunderstorm-light.svg?react";
+import HeavyThunderstormIco from "../assets/Thunderstorm-heavy.svg?react";
+
+import SlightSnowShowersIco from "../assets/Slight-snow-showers.svg?react";
+import HeavySnowShowersIco from "../assets/Heavy-snow-showers.svg?react";
+
+import SlightSnowfallIco from "../assets/Slight-snowfall.svg?react";
+import ModerateSnowfallIco from "../assets/Moderate-snowfall.svg?react";
+import HeavySnowfallIco from "../assets/Heavy-snowfall.svg?react";
 
 const Weather = ({ i18n, city, coords }) => {
   const { t } = useTranslation();
@@ -52,48 +83,48 @@ const Weather = ({ i18n, city, coords }) => {
   })}:00`;
   const WEATHER_CODE_DESCRIPTIONS = {
     // ☀️ Clear & Cloudy
-    0: <IoSunnyOutline />, // Clear sky
-    1: <IoSunnyOutline />, // Mainly clear
-    2: <IoPartlySunnyOutline />, // Partly cloudy
-    3: <IoIosCloudOutline />, // Overcast
+    0: <SunnyIco />,
+    1: <MainlyClearIco />,
+    2: <PartlyCloudyIco />,
+    3: <OvercastIco />,
 
     // 🌫️ Fog & Atmospheric
-    45: <IoIosCloudOutline />, // Fog
-    48: <IoIosCloudOutline />, // Depositing rime fog
+    45: <FogIco />,
+    48: <DepositingRimeFogIco />,
 
     // 🌧️ Drizzle
-    51: <BsCloudRain />, // Light drizzle
-    53: <BsCloudRain />, // Moderate drizzle
-    55: <BsCloudRain />, // Dense drizzle
-    56: <BsCloudRain />, // Light freezing drizzle
-    57: <BsCloudRain />, // Dense freezing drizzle
+    51: <LightDrizzleIco />,
+    53: <ModerateDrizzleIco />,
+    55: <DenseDrizzleIco />,
+    56: <LightFreezingDrizzleIco />,
+    57: <DenseFreezingDrizzleIco />,
 
     // 🌧️ Rain
-    61: <BsCloudRain />, // Slight rain
-    63: <BsCloudRain />, // Moderate rain
-    65: <BsCloudRainHeavy />, // Heavy rain
-    66: <BsCloudRain />, // Light freezing rain
-    67: <BsCloudRainHeavy />, // Heavy freezing rain
+    61: <SlightRainIco />,
+    63: <ModerateRainIco />,
+    65: <HeavyRainIco />,
+    66: <LightFreezingRainIco />,
+    67: <HeavyFreezingRainIco />,
 
     // ❄️ Snow
-    71: <TiWeatherSnow />, // Slight snowfall
-    73: <TiWeatherSnow />, // Moderate snowfall
-    75: <TiWeatherSnow />, // Heavy snowfall
-    77: <TiWeatherSnow />, // Snow grains
+    71: <SlightSnowfallIco />,
+    73: <ModerateSnowfallIco />,
+    75: <HeavySnowfallIco />,
+    77: <SlightSnowfallIco />,
 
     // 🌦️ Rain Showers
-    80: <BsCloudRain />, // Slight rain showers
-    81: <BsCloudRainHeavy />, // Moderate rain showers
-    82: <BsCloudRainHeavy />, // Violent rain showers
+    80: <SlightRainShowersIco />,
+    81: <ModerateRainShowersIco />,
+    82: <ViolentRainShowersIco />,
 
     // ❄️ Snow Showers
-    85: <TiWeatherSnow />, // Slight snow showers
-    86: <TiWeatherSnow />, // Heavy snow showers
+    85: <SlightSnowShowersIco />,
+    86: <HeavySnowShowersIco />,
 
     // ⛈️ Thunderstorms
-    95: <TiWeatherStormy />, // Thunderstorm
-    96: <TiWeatherStormy />, // Thunderstorm with slight hail
-    99: <TiWeatherStormy />, // Thunderstorm with heavy hail
+    95: <ThunderstormIco />,
+    96: <LightThunderstormIco />,
+    99: <HeavyThunderstormIco />,
   };
 
   function getDirection(degrees) {
@@ -236,7 +267,7 @@ const Weather = ({ i18n, city, coords }) => {
       {error && <p style={{ color: "red" }}>{error}</p>}
       <div className="w-full flex flex-col py-6 items-center justify-center">
         <div className="flex flex-col items-center">
-          <p className="text-8xl">
+          <p className="h-40">
             {WEATHER_CODE_DESCRIPTIONS[weatherData.currentWeather.weathercode]}
           </p>
           <div className="flex flex-row font-txtBold font-bold">

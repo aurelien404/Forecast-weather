@@ -27,7 +27,7 @@ const Hourly = ({
               className="w-2/12 md:w-1/12 h-full flex flex-col items-center"
             >
               <p className="font-txtBold font-bold pb-2">{hour}:00</p>
-              <p className="text-2xl">
+              <p className="h-10">
                 {WEATHER_CODE_DESCRIPTIONS[weatherData.weather_code[i]]}
               </p>
               <p className="flex flex-row items-center text-xl md:text-xl font-txtBold font-bold">

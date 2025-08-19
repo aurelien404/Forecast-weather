@@ -80,8 +80,8 @@ function App() {
             }
           />
         </div>
-        <div className="w-full flex flex-col justify-center items-center font-pixel text-sm py-5">
-          <p>api: open-meteo.com & geonames.org | w8ther.com V1.6</p>
+        <div className="w-full flex flex-col justify-center items-center font-pixel text-xs md:text-sm py-5">
+          <p>api: open-meteo.com & geonames.org</p>
           <a
             href=" https://github.com/aurelien404/Forecast-weather/blob/main/Docs/LICENSE.md"
             className=" flex flex-row items-center gap-1 text-zzlink"

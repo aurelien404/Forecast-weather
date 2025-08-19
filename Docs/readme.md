@@ -61,9 +61,6 @@ Feel free to use, modify, and distribute it with proper attribution.
 - **City Database:**  
   [GeoNames Dump](https://download.geonames.org/export/dump/) — City listings with latitude/longitude data.
 
-- **Weather Icons:**  
-  [React Icons](https://react-icons.github.io/react-icons/) — Beautiful icon sets for weather conditions.
-
 ### Docs
 
 - **Open-Meteo docs:**  

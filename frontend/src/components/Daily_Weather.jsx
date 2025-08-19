@@ -52,7 +52,7 @@ const Daily = ({
               <div className="w-1/6 flex items-center px-2 text-base font-bold">
                 <h4>{dayMonth}</h4>
               </div>
-              <div className="w-1/6 flex flex-row items-center justify-center md:px-2 text-2xl">
+              <div className="w-1/6 flex flex-row items-center justify-center md:px-2 h-9">
                 {WEATHER_CODE_DESCRIPTIONS[weatherDay.weather_code[index]]}
               </div>
               <div className="w-2/8 grid grid-cols-3 grid-rows-2 gap-x-2 md:px-2 items-center text-sm">
