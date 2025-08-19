@@ -1,4 +1,4 @@
-# Weather Forecast App
+# www.w8ther.com App
 
 A lightweight weather forecast application built with React & Laravel, pulling real-time data from public APIs.
 
@@ -13,7 +13,7 @@ Feel free to fork, explore, or contribute — your insights are always welcome.
 
 ## Live View
 
-**URL:** [weather.aurelienj.ch](https://w8ther.com)
+**URL:** [w8ther.com](https://w8ther.com)
 
 ## Weather Pictures — A Simple Weather Dashboard
 
