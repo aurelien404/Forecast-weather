@@ -17,7 +17,6 @@ const Daily = ({
 }) => {
   const { t } = useTranslation();
   const lang = i18n;
-  console.log("Daily.jsx i18n = ", lang);
 
   const forecast = Array.from({ length: 7 }, (_, i) => i); // 0 to 6
   const currentDay = `${currentTime.getUTCFullYear()}-${String(

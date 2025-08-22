@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FaSearchLocation } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
+import { FaSearchLocation } from "react-icons/fa";
+import { FaRegMap } from "react-icons/fa";
 import api from "../api";
 
 const CitySearch = ({ onCitySelect, onClick }) => {
@@ -10,6 +12,12 @@ const CitySearch = ({ onCitySelect, onClick }) => {
   const [error, setError] = useState("");
   const [showList, setShowList] = useState(false);
   const { t } = useTranslation();
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/maps"); // redirects to /link
+  };
 
   const handleSearch = async () => {
     try {
@@ -65,6 +73,9 @@ const CitySearch = ({ onCitySelect, onClick }) => {
         />
         <button className="btn ml-auto" onClick={handleSearch}>
           <FaSearchLocation />
+        </button>
+        <button className="btn ml-auto" onClick={handleClick}>
+          <FaRegMap />
         </button>
       </div>
 

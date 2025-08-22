@@ -1,11 +1,13 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import ReactDOM from "react-dom/client"; // or 'react-dom' for older versions
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 import "./index.css";
-import App from "./App.jsx";
 import "./i18n";
+import "leaflet/dist/leaflet.css";
 
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <BrowserRouter>
     <App />
-  </StrictMode>
+  </BrowserRouter>
 );

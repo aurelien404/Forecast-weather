@@ -27,4 +27,32 @@ class CityController extends Controller
                 'query' => $query
             ]);
     }
+
+    public function reverseLookup(Request $request)
+    {
+        $lat = $request->input('lat');
+        $lng = $request->input('lng');
+
+        // Find the nearest city using Haversine formula
+        $city = DB::table('cities')
+            ->select('name', 'country_code', 'latitude', 'longitude',
+                DB::raw("(
+                    6371 * acos(
+                        cos(radians(?)) *
+                        cos(radians(latitude)) *
+                        cos(radians(longitude) - radians(?)) +
+                        sin(radians(?)) *
+                        sin(radians(latitude))
+                    )
+                ) AS distance"))
+            ->setBindings([$lat, $lng, $lat])
+            ->orderBy('distance')
+            ->limit(1)
+            ->first();
+
+        return response()->json([
+            'city' => $city,
+            'coordinates' => ['lat' => $lat, 'lng' => $lng]
+        ]);
+    }
 }

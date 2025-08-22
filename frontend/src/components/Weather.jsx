@@ -6,8 +6,9 @@ import { useTranslation } from "react-i18next";
 import HourlyJsx from "./Hourly_Weather";
 import DailyJsx from "./Daily_Weather";
 
+import { infoCity } from "./DefaultCity";
+
 import { LuWind } from "react-icons/lu"; // wind logo
-import { TiWeatherSnow } from "react-icons/ti"; // snowy
 
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { TiLocationArrow } from "react-icons/ti";
@@ -55,6 +56,8 @@ const Weather = ({ i18n, city, coords }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState("");
   const [icons, setIcons] = useState(false);
+
+  const fallbackCity = infoCity(i18n);
 
   const currentTime = new Date();
   const currentTimeIso = `${currentTime.getUTCFullYear()}-${String(
@@ -149,42 +152,6 @@ const Weather = ({ i18n, city, coords }) => {
     const index = Math.round(degrees / 22.5) % 16;
     return dirs[index];
   }
-
-  const fallbackCity = () => {
-    const lng = i18n;
-    let defaultCity;
-
-    if (lng.includes("CH")) {
-      defaultCity = {
-        name: "Bern",
-        latitude: 46.9481,
-        longitude: 7.4474,
-        country_code: "CH",
-      };
-    } else if (lng.startsWith("fr")) {
-      defaultCity = {
-        name: "Paris",
-        latitude: 48.8566,
-        longitude: 2.3522,
-        country_code: "FR",
-      };
-    } else if (lng.includes("GB") || lng.startsWith("en")) {
-      defaultCity = {
-        name: "London",
-        latitude: 51.5074,
-        longitude: -0.1278,
-        country_code: "GB",
-      };
-    } else {
-      defaultCity = {
-        name: "Ullapool",
-        latitude: 57.8954,
-        longitude: 5.1613,
-        country_code: "GB",
-      };
-    }
-    return defaultCity;
-  };
 
   const [activeCity, setActiveCity] = useState(city || fallbackCity);
   const updateCity = () => {
