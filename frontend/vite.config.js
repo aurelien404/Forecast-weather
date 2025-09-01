@@ -14,7 +14,7 @@ export default defineConfig({
     svgr()
   ],
   server: {
-    host: '192.168.1.177',
+    host: '0.0.0.0',
     https: false,
     port: 5173,
   }
